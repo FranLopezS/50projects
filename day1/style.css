@@ -1,0 +1,83 @@
+body {
+    font-family: 'Muli', sans-serif;
+    /* Display flexible */
+    display: flex;
+    /* Alinea todo al centro */
+    align-items: center;
+    /* Justifica todo al centro */
+    justify-content: center;
+    /* Ocupa el 100% del alto visible */
+    height: 100vh;
+    /* No permite que nada salga de la pantalla. Evita el scroll */
+    overflow: hidden;
+    /* Sin márgenes por ningún lado */
+    margin: 0;
+}
+
+.container {
+    /* Permite a las imgs estar una tras otra en horizontal. El display es flexible. */
+    display: flex;
+    /* Ocupar 90% del ancho visible de la pantalla */
+    width: 90vw;
+}
+
+.panel {
+    /* Escala la imagen */
+    background-size: cover;
+    /* Centra la imagen al centro */
+    background-position: center;
+    /* Evita que la imagen se repita */
+    background-repeat: no-repeat;
+    /* Ocupar 10% de la altura visible de la pantalla */
+    height: 90vh;
+    /* Redondea las esquinas */
+    border-radius: 50px;
+    /* Ratón de click en las fotos */
+    cursor: pointer;
+    /* Flexibilidad de la img */
+    flex: 0.5;
+    margin: 10px;
+    /* Posición calculada respecto al orden normal de los elementos */
+    position: relative;
+    /* Transición de animación: todo, a 700ms, ease-in */
+    transition: all 700ms ease-in;
+}
+
+.panel h3 {
+    font-size: 24px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    margin: 0;
+    opacity: 0;
+    background-color: white;
+    border-radius: 5px;
+}
+
+/* Flexibilidad del panel activo */
+.panel.active {
+    flex: 5;
+}
+
+/* h3 del panel activo */
+.panel.active h3 {
+    opacity: 1;
+    /* La opacidad va de 0.3 a 1 en 0.4s */
+    transition: opacity 0.3s ease-in 0.4s;
+}
+
+/* Condicional: si max-width es 480px (o menos) */
+/* Si es false, se anula */
+@media (max-width: 480px) {
+    .container {
+        /* El ancho se extiende */
+        width: 100vw;
+    }
+
+    /* Cuarto y quinto elementos de la clase panel */
+    .panel:nth-of-type(4),
+    .panel:nth-of-type(5) {
+        /* Ocultar */
+        display: none;
+    }
+}
